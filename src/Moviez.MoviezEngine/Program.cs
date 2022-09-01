@@ -1,4 +1,8 @@
-﻿using Serilog;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Moviez.MoviezEngine.Entities;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<MoviezDbContext>(options =>
+                options.UseNpgsql(
+                    builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Host.UseSerilog((ctx, lc) =>
     lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
