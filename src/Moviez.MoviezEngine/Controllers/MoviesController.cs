@@ -65,7 +65,7 @@ namespace Moviez.MoviezEngine.Controllers
 
         
         /// <summary>
-        /// To Add a movie using pre-existing actors and producer
+        /// To Add a movie using pre-existing actors and producers
         /// </summary>
         /// <param name="movieCreateRequest"></param>
         /// <returns></returns>
