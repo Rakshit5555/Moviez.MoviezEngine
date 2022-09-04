@@ -116,7 +116,7 @@ namespace Moviez.MoviezEngine.Services
                     }
                     
                     movieBaseResponse.Status = true;
-                    movieBaseResponse.Message = "Movie Created Successfully";
+                    movieBaseResponse.Message = "Movie Added Successfully";
                     movieBaseResponse.Id = movie.MovieId;
 
                     if (movieBaseResponse.Status)
@@ -131,7 +131,7 @@ namespace Moviez.MoviezEngine.Services
                 catch(Exception e)
                 {
                     movieBaseResponse.Status = false;
-                    movieBaseResponse.Message = "Movie Creation failed";
+                    movieBaseResponse.Message = "Failed to add movie";
 
                     await transaction.RollbackAsync().ConfigureAwait(false);
                     logger.LogError("Error at CreateMovie: " + e.Message);
