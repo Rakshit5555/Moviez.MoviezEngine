@@ -7,6 +7,8 @@ namespace Moviez.MoviezEngine.Entities
     {
         public long MovieId { get; set; }
         public long ActorId { get; set; }
+        public bool IsActive { get; set; }
+        public long CastId { get; set; }
 
         public virtual Actor Actor { get; set; }
         public virtual Movie Movie { get; set; }

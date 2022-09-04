@@ -12,11 +12,13 @@ namespace Moviez.MoviezEngine.Entities
 
         public long ProducerId { get; set; }
         public string ProducerName { get; set; }
-        public DateOnly DateOfBirth { get; set; }
-        public string Gender { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string GenderCode { get; set; }
         public string Company { get; set; }
         public string Bio { get; set; }
+        public bool IsActive { get; set; }
 
+        public virtual LkpGender GenderCodeNavigation { get; set; }
         public virtual ICollection<Movie> Movies { get; set; }
     }
 }

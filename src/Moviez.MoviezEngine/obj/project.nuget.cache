@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "nVta8PBUrK/ecU5PYayxznvDQD1LE8WjD1Q1gaYQgurHixQ7kRAhWhwt7wktO51qBRm3ix04A1bIDV8si3KEug==",
+  "dgSpecHash": "z6mTEXNDloRdUVb44wKNmaIlP0zDvaUVH9Bn7y1fnJkFrau3MYQRYncIRk6yTRHGsNXzO5SWGOGHLlPWppk8jg==",
   "success": true,
   "projectFilePath": "/Users/rakshit/Projects/MoviezEngineRemote/Moviez.MoviezEngine/src/Moviez.MoviezEngine/Moviez.MoviezEngine.csproj",
   "expectedPackageFiles": [
+    "/Users/rakshit/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
+    "/Users/rakshit/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "/Users/rakshit/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/Users/rakshit/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/rakshit/.nuget/packages/microsoft.entityframeworkcore/6.0.8/microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
     "/Users/rakshit/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.8/microsoft.entityframeworkcore.abstractions.6.0.8.nupkg.sha512",
     "/Users/rakshit/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.8/microsoft.entityframeworkcore.analyzers.6.0.8.nupkg.sha512",
