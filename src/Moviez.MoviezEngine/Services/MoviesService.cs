@@ -30,7 +30,7 @@ namespace Moviez.MoviezEngine.Services
             this.actorsService = actorsService;
         }
 
-        public async Task<IEnumerable> GetAllMovieDetails()
+        public async Task<List<MovieDetailReponse>> GetAllMovieDetails()
         {
 
             var moviesInfo = await _dbContext.Movies.Join(_dbContext.Producers,
@@ -69,6 +69,35 @@ namespace Moviez.MoviezEngine.Services
                }).ToList();
 
             return movieData;
+        }
+
+
+        public async Task<IEnumerable<MovieDetailReponse>> SearchMoviesAsync(string name, string actor, DateTime? releaseDateStart, DateTime? releaseDateEnd)
+        {
+            List<MovieDetailReponse> filteredMovies = await GetAllMovieDetails();
+
+            if (!string.IsNullOrEmpty(name))
+                filteredMovies = filteredMovies
+                    .Where(m => m.MovieName.Contains(name, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+            if (!string.IsNullOrEmpty(actor))
+                filteredMovies = filteredMovies
+                    .Where(m => m.Actors
+                    .Any(x => x.ActorName.Contains(actor, StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+
+            if (releaseDateStart.HasValue)
+                filteredMovies = filteredMovies
+                    .Where(m => m.DateOfRelease >= releaseDateStart)
+                    .ToList();
+
+            if (releaseDateEnd.HasValue)
+                filteredMovies = filteredMovies
+                    .Where(m => m.DateOfRelease <= releaseDateEnd)
+                    .ToList();
+
+            return await Task.FromResult(filteredMovies.ToList());
         }
 
         /// <summary>

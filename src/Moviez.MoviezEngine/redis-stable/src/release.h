@@ -1,0 +1,5 @@
+#define REDIS_GIT_SHA1 "cb84f511"
+#define REDIS_GIT_DIRTY "       0"
+#define REDIS_BUILD_ID "Rakshits-MacBook-Air.local-1725893402"
+#include "version.h"
+#define REDIS_BUILD_ID_RAW REDIS_VERSION REDIS_BUILD_ID REDIS_GIT_DIRTY REDIS_GIT_SHA1

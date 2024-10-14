@@ -12,8 +12,15 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
+// Add Redis Cache Service
+//This will connect the app to the Redis server running on your local machine (localhost:6379)
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetSection("Redis")["ConnectionString"];
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
@@ -24,15 +31,19 @@ builder.Services.AddSwaggerGen(c =>
 
 c.IncludeXmlComments(xmlPath));
 
+//Using Entity Framework Core
 builder.Services.AddDbContext<MoviezDbContext>(options =>
                 options.UseNpgsql(
                     builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//Logging
 builder.Host.UseSerilog((ctx, lc) =>
     lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 
+//Using Automapper
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 
+//Enabling CORS
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAll",
         b => b.AllowAnyMethod()
@@ -40,6 +51,7 @@ builder.Services.AddCors(options => {
         .AllowAnyOrigin());
 });
 
+//Adding Services
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
 builder.Services.AddScoped<IActorsService, ActorsService>();
